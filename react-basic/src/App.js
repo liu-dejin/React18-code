@@ -1,20 +1,27 @@
-// 定义文章类型
-const articleType = 2
-// 核心函数
-const getArticleType= ()=>{
-  if(articleType===0){
-    return <div>无图模式</div>
-  }else if(articleType===1){
-    return <div>单图模式</div>
-  }else{
-    return <div>三图模式</div>
-  }
+// 普通方式
+// const onClick = ()=>{
+//   console.log('被点击了')
+// }
+
+// 事件对象
+// const onClick = (e)=>{
+//   console.log('被点击了',e)
+// }
+
+// 自定义参数
+// const onClick = (name) => {
+//   console.log(name);
+// };
+
+// 自定义参数+事件对象e
+const onClick = (name,e)=>{
+  console.log(name,e)
 }
 function App() {
   return (
-    <div className="App">   
-    {/* 复杂的条件渲染 */}
-    {getArticleType()}
+    <div className="App">
+      {/* <button onClick={()=>onClick('张三')}>click me</button> */}
+      <button onClick={(e)=>onClick('张三',e)}>click me</button>
     </div>
   );
 }
