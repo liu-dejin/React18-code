@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 import avatar from "./images/bozai.png";
 import _ from "lodash";
+import classNames from "classnames";
 
 /**
  * 评论列表的渲染和操作
@@ -116,9 +117,9 @@ const App = () => {
               <span
                 onClick={() => handleTableChange(item.type)}
                 key={item.type}
-                className={`nav-item ${
-                  activeType === item.type ? "active" : ""
-                }`}
+                className={classNames('nav-item', {
+                  active: activeType === item.type,
+                })}
               >
                 {item.text}
               </span>
