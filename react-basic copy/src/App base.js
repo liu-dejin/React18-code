@@ -1,9 +1,20 @@
 
-function App() {
+function Son (props) {
+
   return (
-    <div className="App">   
+    <div>
+
     </div>
-  );
+  )
+}
+function App () {
+  const name = 'this is App '
+  return (
+    <div className="App">
+      <Son>
+      </Son>
+    </div>
+  )
 }
 
-export default App;
+export default App
