@@ -1,18 +1,23 @@
+import { useState } from "react"
 
-function Son (props) {
+// 核心: 在子组件调用父组件的函数并传参
+function Son ({ onGetMessage }) {
+  const sonMessage = 'this is son message'
   return (
-    <div>
-      {props.children}
+    <div >
+      <button onClick={() => onGetMessage(sonMessage)}>点击获取子组件消息</button>
     </div>
   )
 }
 function App () {
-  const name = 'this is App '
+  const [message, setMessage] = useState('')
+  const getMessage = (msg) => {
+    setMessage(msg)
+  }
   return (
     <div className="App">
-      <Son>
-        <span>this is span</span>
-      </Son>
+      <Son onGetMessage={getMessage} />
+      {message}
     </div>
   )
 }
