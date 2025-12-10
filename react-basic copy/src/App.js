@@ -1,40 +1,37 @@
-import { useState } from "react"
+import { createContext, useContext } from "react"
+// 1.创建上下文对象
+const Msgcontext = createContext()
+function A () {
 
-// 1.子传父 Son1->App->Son2
-function Son1 ({ onGetName }) {
-  const name = 'this is Son1'
   return (
     <div>
-      <button onClick={() => {
-        onGetName(name
-        )
-      }}>点击</button>
+      this is a
+      <B>
+      </B>
     </div>
   )
 }
-function Son2 ({ name }) {
-
+function B () {
+  // 3，底层组件使用useContext获取数据
+  const msg = useContext(Msgcontext)
   return (
-    <div>
-      this is Son2
-      {name}
-    </div>
+    < div >
+      {msg}
+      this is b
+    </ div >
   )
 }
 function App () {
-  const [name, setName] = useState('')
-  const getSon1Name = (name) => {
-
-    setName(name)
-  }
+  const msg = 'this is App '
   return (
-    <div className="App">
-      <Son1 onGetName={getSon1Name}>
-      </Son1>
 
-      <Son2 name={name}>
-      </Son2>
-    </div>
+    // 2.高阶组件provider提供数据
+    <Msgcontext.Provider value={msg}>
+      <div className="App">
+        <A>
+        </A>
+      </div>
+    </Msgcontext.Provider>
   )
 }
 
