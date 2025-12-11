@@ -1,37 +1,26 @@
-import { createContext, useContext } from "react"
-// 1.创建上下文对象
-const Msgcontext = createContext()
-function A () {
+import { useEffect, useState } from "react"
 
-  return (
-    <div>
-      this is a
-      <B>
-      </B>
-    </div>
-  )
-}
-function B () {
-  // 3，底层组件使用useContext获取数据
-  const msg = useContext(Msgcontext)
-  return (
-    < div >
-      {msg}
-      this is b
-    </ div >
-  )
+function Son () {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log('定时器执行中')
+    }, 1000)
+    return () => {
+      // 清除副作用
+      clearInterval(timer)
+    }
+  }, [])
+  return <div>this is Son</div>
 }
 function App () {
-  const msg = 'this is App '
+  const [show, setShow] = useState(true)
   return (
 
-    // 2.高阶组件provider提供数据
-    <Msgcontext.Provider value={msg}>
-      <div className="App">
-        <A>
-        </A>
-      </div>
-    </Msgcontext.Provider>
+    <div className="App" onClick={() => {
+      setShow(false)
+    }}>
+      {show && <Son></Son>}
+    </div >
   )
 }
 
