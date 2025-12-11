@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
-import "./App.scss";
-import avatar from "./images/bozai.png";
-import _ from "lodash";
-import classNames from "classnames";
-import { v4 as uuidv4 } from "uuid";
-import dayjs from "dayjs";
-
+import { useRef, useState } from "react"
+import "./App.scss"
+import avatar from "./images/bozai.png"
+import _ from "lodash"
+import classNames from "classnames"
+import { v4 as uuidv4 } from "uuid"
+import dayjs from "dayjs"
+import { useEffect } from "react"
+import axios from "axios"
 /**
  * 评论列表的渲染和操作
  *
@@ -14,45 +15,45 @@ import dayjs from "dayjs";
  */
 
 // 评论列表数据
-const defaultList = [
-  {
-    // 评论id
-    rpid: 3,
-    // 用户信息
-    user: {
-      uid: "13258165",
-      avatar: "",
-      uname: "周杰伦",
-    },
-    // 评论内容
-    content: "哎哟，不错哦",
-    // 评论时间
-    ctime: "10-18 08:15",
-    like: 88,
-  },
-  {
-    rpid: 2,
-    user: {
-      uid: "36080105",
-      avatar: "",
-      uname: "许嵩",
-    },
-    content: "我寻你千百度 日出到迟暮",
-    ctime: "11-13 11:29",
-    like: 88,
-  },
-  {
-    rpid: 1,
-    user: {
-      uid: "30009257",
-      avatar,
-      uname: "黑马前端",
-    },
-    content: "学前端就来黑马",
-    ctime: "10-19 09:00",
-    like: 66,
-  },
-];
+// const defaultList = [
+//   {
+//     // 评论id
+//     rpid: 3,
+//     // 用户信息
+//     user: {
+//       uid: "13258165",
+//       avatar: "",
+//       uname: "周杰伦",
+//     },
+//     // 评论内容
+//     content: "哎哟，不错哦",
+//     // 评论时间
+//     ctime: "10-18 08:15",
+//     like: 88,
+//   },
+//   {
+//     rpid: 2,
+//     user: {
+//       uid: "36080105",
+//       avatar: "",
+//       uname: "许嵩",
+//     },
+//     content: "我寻你千百度 日出到迟暮",
+//     ctime: "11-13 11:29",
+//     like: 88,
+//   },
+//   {
+//     rpid: 1,
+//     user: {
+//       uid: "30009257",
+//       avatar,
+//       uname: "黑马前端",
+//     },
+//     content: "学前端就来黑马",
+//     ctime: "10-19 09:00",
+//     like: 66,
+//   },
+// ]
 // 当前登录用户信息
 const user = {
   // 用户id
@@ -61,7 +62,7 @@ const user = {
   avatar,
   // 用户昵称
   uname: "黑马前端",
-};
+}
 
 /**
  * 导航 Tab 的渲染和操作
@@ -76,36 +77,98 @@ const user = {
 const tabs = [
   { type: "hot", text: "最热" },
   { type: "time", text: "最新" },
-];
+]
+
+// 封装请求函数hook
+function useGetList () {
+  // 获取接口数据渲染
+  const [list, setList] = useState([])
+  useEffect(() => {
+    // 请求数据
+    const getList = async () => {
+      const res = await axios.get(' http://localhost:3001/list')
+      setList(res.data)
+    }
+    getList()
+  }, [])
+  return { list, setList }
+}
+// 木偶组件
+const Item = ({ item, onDel }) => {
+  return (
+    <div className="reply-item">
+      {/* 头像 */}
+      <div className="root-reply-avatar">
+        <div className="bili-avatar">
+          <img
+            className="bili-avatar-img"
+            alt=""
+            src={item.user.avatar}
+          />
+        </div>
+      </div>
+
+      <div className="content-wrap">
+        {/* 用户名 */}
+        <div className="user-info">
+          <div className="user-name">{item.user.uname}</div>
+        </div>
+        {/* 评论内容 */}
+        <div className="root-reply">
+          <span className="reply-content">{item.content}</span>
+          <div className="reply-info">
+            {/* 评论时间 */}
+            <span className="reply-time">{item.ctime}</span>
+            {/* 评论数量 */}
+            <span className="reply-time">点赞数:{item.like}</span>
+            {user.uid === item.user.uid && (
+              <span
+                className="delete-btn"
+                onClick={() => onDel(item.rpid)}
+              >
+                删除
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+// 智能组件
 const App = () => {
   // 1.使用useState维护列表
-  const [list, setList] = useState(_.orderBy(defaultList, "like", "desc"));
+  // const [list, setList] = useState(_.orderBy(defaultList, "like", "desc"));
+
+  const { list, setList } = useGetList()
+
+
   // 删除逻辑
-  const [activeType, setActiveType] = useState("hot");
+  const [activeType, setActiveType] = useState("hot")
   const handleDelete = (id) => {
-    console.log(id);
+    console.log(id)
     // 对defaultList过滤
-    setList(list.filter((item) => item.rpid !== id));
-  };
+    setList(list.filter((item) => item.rpid !== id))
+  }
   // tab切换高亮
   // 1.点击谁就把谁的type记录下来
   // 2.记录的type和每一项匹配 控制类名显示
   const handleTableChange = (type) => {
-    console.log(type);
-    setActiveType(type);
+    console.log(type)
+    setActiveType(type)
     // 基于列表排序
     if (type === "hot") {
       // 根据点赞数排序
       // lodash
-      setList(_.orderBy(list, "like", "desc"));
+      setList(_.orderBy(list, "like", "desc"))
     } else {
       // 根据创建时间排序
-      setList(_.orderBy(list, "ctime", "desc"));
+      setList(_.orderBy(list, "ctime", "desc"))
     }
-  };
+  }
   // 发表评论
-  const textareaRef = useRef(null);
-  const [comment, setComment] = useState("");
+  const textareaRef = useRef(null)
+  const [comment, setComment] = useState("")
   const handlePublish = () => {
     setList([
       ...list,
@@ -120,12 +183,12 @@ const App = () => {
         ctime: dayjs(new Date()).format("MM-DD HH:mm"),
         like: 66,
       },
-    ]);
+    ])
     // 1.清空输入框
-    setComment("");
+    setComment("")
     // 2.聚焦
-    textareaRef.current.focus();
-  };
+    textareaRef.current.focus()
+  }
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -182,49 +245,12 @@ const App = () => {
         {/* 评论列表 */}
         <div className="reply-list">
           {/* 评论项 */}
-          {list.map((item) => (
-            <div key={item.rpid} className="reply-item">
-              {/* 头像 */}
-              <div className="root-reply-avatar">
-                <div className="bili-avatar">
-                  <img
-                    className="bili-avatar-img"
-                    alt=""
-                    src={item.user.avatar}
-                  />
-                </div>
-              </div>
-
-              <div className="content-wrap">
-                {/* 用户名 */}
-                <div className="user-info">
-                  <div className="user-name">{item.user.uname}</div>
-                </div>
-                {/* 评论内容 */}
-                <div className="root-reply">
-                  <span className="reply-content">{item.content}</span>
-                  <div className="reply-info">
-                    {/* 评论时间 */}
-                    <span className="reply-time">{item.ctime}</span>
-                    {/* 评论数量 */}
-                    <span className="reply-time">点赞数:{item.like}</span>
-                    {user.uid === item.user.uid && (
-                      <span
-                        className="delete-btn"
-                        onClick={() => handleDelete(item.rpid)}
-                      >
-                        删除
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          {list.map((item) => <Item onDel={handleDelete} key={item.rpid} item={item}></Item>
+          )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
