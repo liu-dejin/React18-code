@@ -11,7 +11,7 @@ const billStore = createSlice(
     reducers: {
       // 同步修改方法
       setBillList(state, action) {
-        state.billList = action.payload.billList
+        state.billList = action.payload
       }
     }
   }
