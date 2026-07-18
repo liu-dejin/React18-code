@@ -53,7 +53,7 @@ const Month = () => {
   const dayGroup = useMemo(() => {
     // return 出去计算后的值
     const groupData = _.groupBy(currentMonthData, item => dayjs(item.date).format('YYYY-MM-DD'))
-    const keys = Object.keys(groupData).sort()
+    const keys = Object.keys(groupData).sort().reverse()
     return {
       keys,
       groupData

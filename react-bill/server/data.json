@@ -5,476 +5,491 @@
       "money": -99,
       "date": "2026-01-15 10:36:42",
       "useFor": "drinks",
-      "id": 1
+      "id": "1"
     },
     {
       "type": "pay",
       "money": -88,
       "date": "2026-01-20 10:37:51",
       "useFor": "longdistance",
-      "id": 2
+      "id": "2"
     },
     {
       "type": "income",
       "money": 100,
       "date": "2026-01-22 00:00:00",
       "useFor": "bonus",
-      "id": 3
+      "id": "3"
     },
     {
       "type": "pay",
       "money": -33,
       "date": "2026-02-14 16:15:41",
       "useFor": "dessert",
-      "id": 4
+      "id": "4"
     },
     {
       "type": "pay",
       "money": -56,
       "date": "2026-02-18T05:37:06.000Z",
       "useFor": "drinks",
-      "id": 5
+      "id": "5"
     },
     {
       "type": "pay",
       "money": -888,
       "date": "2026-02-28T08:21:42.135Z",
       "useFor": "travel",
-      "id": 6
+      "id": "6"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-03-20T06:45:54.004Z",
       "useFor": "salary",
-      "id": 7
+      "id": "7"
     },
     {
       "type": "pay",
       "money": -10,
       "date": "2026-03-22T07:17:12.531Z",
       "useFor": "drinks",
-      "id": 8
+      "id": "8"
     },
     {
       "type": "pay",
       "money": -20,
       "date": "2026-03-25T07:51:20.421Z",
       "useFor": "dessert",
-      "id": 9
+      "id": "9"
     },
     {
       "type": "pay",
       "money": -100,
       "date": "2026-03-28T09:18:12.898Z",
       "useFor": "drinks",
-      "id": 17
+      "id": "17"
     },
     {
       "type": "pay",
       "money": -50,
       "date": "2026-04-05T09:11:23.312Z",
       "useFor": "food",
-      "id": 18
+      "id": "18"
     },
     {
       "type": "pay",
       "money": -100,
       "date": "2026-04-12T03:03:15.617Z",
       "useFor": "drinks",
-      "id": 19
+      "id": "19"
     },
     {
       "type": "pay",
       "money": -100,
       "date": "2026-04-20T16:00:00.000Z",
       "useFor": "food",
-      "id": 20
+      "id": "20"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-05-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 21
+      "id": "21"
     },
     {
       "type": "pay",
       "money": -45,
       "date": "2026-05-05 14:20:30",
       "useFor": "drinks",
-      "id": 22
+      "id": "22"
     },
     {
       "type": "pay",
       "money": -120,
       "date": "2026-05-15 18:45:10",
       "useFor": "food",
-      "id": 23
+      "id": "23"
     },
     {
       "type": "income",
       "money": 500,
       "date": "2026-06-01 09:00:00",
       "useFor": "bonus",
-      "id": 24
+      "id": "24"
     },
     {
       "type": "pay",
       "money": -200,
       "date": "2026-06-10T12:30:45.000Z",
       "useFor": "travel",
-      "id": 25
+      "id": "25"
     },
     {
       "type": "pay",
       "money": -75,
       "date": "2026-06-20T15:20:33.123Z",
       "useFor": "dessert",
-      "id": 26
+      "id": "26"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-06-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 27
+      "id": "27"
     },
     {
       "type": "pay",
       "money": -60,
       "date": "2026-07-02 08:30:00",
       "useFor": "drinks",
-      "id": 28
+      "id": "28"
     },
     {
       "type": "pay",
       "money": -150,
       "date": "2026-07-08T11:45:22.789Z",
       "useFor": "food",
-      "id": 29
+      "id": "29"
     },
     {
       "type": "pay",
       "money": -300,
       "date": "2026-07-15T14:00:00.000Z",
       "useFor": "longdistance",
-      "id": 30
+      "id": "30"
     },
     {
       "type": "pay",
       "money": -25,
       "date": "2026-01-15 18:20:11",
       "useFor": "dessert",
-      "id": 31
+      "id": "31"
     },
     {
       "type": "income",
       "money": 300,
       "date": "2026-01-20 09:15:33",
       "useFor": "bonus",
-      "id": 32
+      "id": "32"
     },
     {
       "type": "pay",
       "money": -12,
       "date": "2026-01-22 12:45:09",
       "useFor": "drinks",
-      "id": 33
+      "id": "33"
     },
     {
       "type": "pay",
       "money": -200,
       "date": "2026-02-14 19:30:22",
       "useFor": "food",
-      "id": 34
+      "id": "34"
     },
     {
       "type": "pay",
       "money": -67,
       "date": "2026-02-18T12:15:44.123Z",
       "useFor": "dessert",
-      "id": 35
+      "id": "35"
     },
     {
       "type": "pay",
       "money": -45,
       "date": "2026-02-28T22:10:18.987Z",
       "useFor": "drinks",
-      "id": 36
+      "id": "36"
     },
     {
       "type": "pay",
       "money": -150,
       "date": "2026-03-20T08:30:21.456Z",
       "useFor": "food",
-      "id": 37
+      "id": "37"
     },
     {
       "type": "pay",
       "money": -30,
       "date": "2026-03-22 13:22:45",
       "useFor": "drinks",
-      "id": 38
+      "id": "38"
     },
     {
       "type": "pay",
       "money": -80,
       "date": "2026-03-25 10:05:17",
       "useFor": "food",
-      "id": 39
+      "id": "39"
     },
     {
       "type": "income",
       "money": 2000,
       "date": "2026-03-28T16:30:00.000Z",
       "useFor": "bonus",
-      "id": 40
+      "id": "40"
     },
     {
       "type": "pay",
       "money": -90,
       "date": "2026-04-05 07:45:33",
       "useFor": "dessert",
-      "id": 41
+      "id": "41"
     },
     {
       "type": "pay",
       "money": -60,
       "date": "2026-04-12T09:22:18.321Z",
       "useFor": "drinks",
-      "id": 42
+      "id": "42"
     },
     {
       "type": "pay",
       "money": -250,
       "date": "2026-04-20 11:10:55",
       "useFor": "longdistance",
-      "id": 43
+      "id": "43"
     },
     {
       "type": "pay",
       "money": -35,
       "date": "2026-05-05 16:40:12",
       "useFor": "drinks",
-      "id": 44
+      "id": "44"
     },
     {
       "type": "pay",
       "money": -130,
       "date": "2026-05-15 20:15:47",
       "useFor": "food",
-      "id": 45
+      "id": "45"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-05-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 46
+      "id": "46"
     },
     {
       "type": "pay",
       "money": -500,
       "date": "2026-06-01 14:25:38",
       "useFor": "travel",
-      "id": 47
+      "id": "47"
     },
     {
       "type": "pay",
       "money": -85,
       "date": "2026-06-10T18:45:22.456Z",
       "useFor": "dessert",
-      "id": 48
+      "id": "48"
     },
     {
       "type": "income",
       "money": 600,
       "date": "2026-06-20T09:00:11.234Z",
       "useFor": "bonus",
-      "id": 49
+      "id": "49"
     },
     {
       "type": "pay",
       "money": -220,
       "date": "2026-06-28 07:30:49",
       "useFor": "food",
-      "id": 50
+      "id": "50"
     },
     {
       "type": "pay",
       "money": -40,
       "date": "2026-07-02 17:12:08",
       "useFor": "drinks",
-      "id": 51
+      "id": "51"
     },
     {
       "type": "pay",
       "money": -95,
       "date": "2026-07-08T13:20:33.567Z",
       "useFor": "dessert",
-      "id": 52
+      "id": "52"
     },
     {
       "type": "pay",
       "money": -180,
       "date": "2026-07-15 10:50:21",
       "useFor": "food",
-      "id": 53
+      "id": "53"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-01-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 54
+      "id": "54"
     },
     {
       "type": "pay",
       "money": -15,
       "date": "2026-01-28 18:20:44",
       "useFor": "drinks",
-      "id": 55
+      "id": "55"
     },
     {
       "type": "pay",
       "money": -76,
       "date": "2026-02-10 09:11:33",
       "useFor": "food",
-      "id": 56
+      "id": "56"
     },
     {
       "type": "pay",
       "money": -320,
       "date": "2026-02-20T14:45:11.789Z",
       "useFor": "longdistance",
-      "id": 57
+      "id": "57"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-02-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 58
+      "id": "58"
     },
     {
       "type": "pay",
       "money": -42,
       "date": "2026-03-01 08:30:19",
       "useFor": "drinks",
-      "id": 59
+      "id": "59"
     },
     {
       "type": "pay",
       "money": -210,
       "date": "2026-03-10T11:22:33.456Z",
       "useFor": "food",
-      "id": 60
+      "id": "60"
     },
     {
       "type": "pay",
       "money": -55,
       "date": "2026-03-15 15:40:28",
       "useFor": "dessert",
-      "id": 61
+      "id": "61"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-03-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 62
+      "id": "62"
     },
     {
       "type": "pay",
       "money": -110,
       "date": "2026-04-01 07:55:16",
       "useFor": "drinks",
-      "id": 63
+      "id": "63"
     },
     {
       "type": "pay",
       "money": -270,
       "date": "2026-04-15T10:18:44.321Z",
       "useFor": "travel",
-      "id": 64
+      "id": "64"
     },
     {
       "type": "pay",
       "money": -65,
       "date": "2026-04-22 19:20:37",
       "useFor": "food",
-      "id": 65
+      "id": "65"
     },
     {
       "type": "pay",
       "money": -48,
       "date": "2026-05-01 08:40:52",
       "useFor": "drinks",
-      "id": 66
+      "id": "66"
     },
     {
       "type": "pay",
       "money": -350,
       "date": "2026-05-10T12:00:00.000Z",
       "useFor": "longdistance",
-      "id": 67
+      "id": "67"
     },
     {
       "type": "pay",
       "money": -25,
       "date": "2026-05-20 13:15:29",
       "useFor": "dessert",
-      "id": 68
+      "id": "68"
     },
     {
       "type": "pay",
       "money": -700,
       "date": "2026-06-05 16:30:41",
       "useFor": "travel",
-      "id": 69
+      "id": "69"
     },
     {
       "type": "pay",
       "money": -90,
       "date": "2026-06-15T09:45:12.345Z",
       "useFor": "food",
-      "id": 70
+      "id": "70"
     },
     {
       "type": "pay",
       "money": -30,
       "date": "2026-06-25 14:10:56",
       "useFor": "drinks",
-      "id": 71
+      "id": "71"
     },
     {
       "type": "pay",
       "money": -160,
       "date": "2026-07-01 10:25:13",
       "useFor": "food",
-      "id": 72
+      "id": "72"
     },
     {
       "type": "pay",
       "money": -220,
       "date": "2026-07-10T15:55:44.987Z",
       "useFor": "longdistance",
-      "id": 73
+      "id": "73"
     },
     {
       "type": "pay",
       "money": -80,
       "date": "2026-07-18 08:15:29",
       "useFor": "dessert",
-      "id": 74
+      "id": "74"
     },
     {
       "type": "income",
       "money": 10000,
       "date": "2026-07-28T16:00:00.000Z",
       "useFor": "salary",
-      "id": 75
+      "id": "75"
+    },
+    {
+      "type": "pay",
+      "money": -110,
+      "date": "2026-07-18T09:26:20.055Z",
+      "useFor": "longdistance",
+      "id": "ozwJu01_4bs"
+    },
+    {
+      "type": "pay",
+      "money": 0,
+      "date": "2022-01-12T16:00:00.000Z",
+      "useFor": "food",
+      "id": "qrnsCClrokQ"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
