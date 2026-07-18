@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import dayjs from 'dayjs'
 import { useSelector } from 'react-redux'
 import _ from 'lodash'
+import DailyBill from './components/DailyBill'
 
 const Month = () => {
   // 按月做数据分组
@@ -48,6 +49,16 @@ const Month = () => {
     setCurrentDate(formatDate)
     setCurrentMonthData(monthGroup[formatDate])
   }
+  // 当前月按日分组
+  const dayGroup = useMemo(() => {
+    // return 出去计算后的值
+    const groupData = _.groupBy(currentMonthData, item => dayjs(item.date).format('YYYY-MM-DD'))
+    const keys = Object.keys(groupData).sort()
+    return {
+      keys,
+      groupData
+    }
+  }, [currentMonthData])
   return (
     <div className="monthlyBill">
       <NavBar className="nav" backArrow={false}>
@@ -88,6 +99,13 @@ const Month = () => {
             onConfirm={onConfirm}
             onClose={() => setDataVisible(false)}
           />
+          {/* 单日列表统计 */}
+          {
+            dayGroup.keys.map(key => {
+              return <DailyBill date={key} billList={dayGroup.groupData[key]} />
+            })
+          }
+
         </div>
       </div>
     </div >
