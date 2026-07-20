@@ -10,7 +10,8 @@ export const router = createBrowserRouter([{
   children: [
     {
       index: true,
-      element: <Navigate to="/month" replace />
+
+      element: <Navigate to="/new" replace />
     }, {
       path: '/month',
       element: <Month />
