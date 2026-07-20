@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import New from "@/pages/New";
 import Layout from "@/pages/Layout";
 import Month from "@/pages/Month";
@@ -9,6 +9,9 @@ export const router = createBrowserRouter([{
   element: <Layout />,
   children: [
     {
+      index: true,
+      element: <Navigate to="/month" replace />
+    }, {
       path: '/month',
       element: <Month />
     }, {
