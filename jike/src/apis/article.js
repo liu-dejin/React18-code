@@ -16,3 +16,14 @@ export const createArticleApi = (formData) => {
     data: formData
   })
 }
+
+// 上传封面
+export const uploadImageApi = (file) => {
+  const formData = new FormData()
+  formData.append('image', file)
+  return request({
+    url: '/upload',
+    method: 'POST',
+    data: formData
+  })
+}

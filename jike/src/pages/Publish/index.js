@@ -7,7 +7,8 @@ import {
   Input,
   Upload,
   Space,
-  Select
+  Select,
+  message
 } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
@@ -15,12 +16,13 @@ import './index.scss'
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import { useEffect, useState } from 'react';
-import { createArticleApi, getChannelsApi } from '@/apis/article';
+import { createArticleApi, getChannelsApi, uploadImageApi } from '@/apis/article';
 
 const { Option } = Select
 
 const Publish = () => {
   const [channelList, setChannelList] = useState([])
+  const [fileList, setFileList] = useState([])
   useEffect(() => {
     console.log("发布页面启动")
     const getChannelsList = async () => {
@@ -31,17 +33,44 @@ const Publish = () => {
   }, [])
   const onFinish = (formValue) => {
     const { title, content, channel_id } = formValue
+    // 无图
+    if (picType === 0) {
+      const reqData = {
+        title, content, channel_id,
+        cover: { type: 0, images: [] }
+      }
+      createArticleApi(reqData)
+      return
+    }
+    // 有图 — 校验图片数量
+    if (fileList.length !== picType) return message.error('图片数量和类型不匹配')
     const reqData = {
       title,
       content,
       cover: {
-        type: 0,
-        images: []
+        type: picType,
+        images: fileList.map(item => item.response.data.url)
       },
       channel_id,
     }
     createArticleApi(reqData)
   };
+  const onUploadChange = (info) => {
+    setFileList(info.fileList)
+  }
+  const customUploadRequest = async (options) => {
+    const { file, onSuccess, onError } = options
+    try {
+      const res = await uploadImageApi(file)
+      onSuccess(res, file)
+    } catch (err) {
+      onError(err)
+    }
+  }
+  const [picType, setPicType] = useState(0)
+  const onTypeChange = (e) => {
+    setPicType(e.target.value)
+  }
   return (
     <div className="publish">
       <Card
@@ -56,7 +85,7 @@ const Publish = () => {
         <Form
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ type: 1 }}
+          initialValues={{ type: picType }}
           onFinish={onFinish}
         >
           <Form.Item
@@ -78,6 +107,29 @@ const Publish = () => {
               )
               }
             </Select>
+          </Form.Item>
+          <Form.Item label="封面">
+            <Form.Item name="type">
+              <Radio.Group onChange={onTypeChange}>
+                <Radio value={1}>单图</Radio>
+                <Radio value={3}>三图</Radio>
+                <Radio value={0}>无图</Radio>
+              </Radio.Group>
+            </Form.Item>
+            {/* listType 选择样式  showUploadList 显示上传列表 */}
+            {picType > 0 && <Upload
+              name='image'
+              listType="picture-card"
+              showUploadList
+              fileList={fileList}
+              customRequest={customUploadRequest}
+              onChange={onUploadChange}
+              maxCount={picType}
+            >
+              <div style={{ marginTop: 8 }}>
+                <PlusOutlined />
+              </div>
+            </Upload>}
           </Form.Item>
           <Form.Item
             label="内容"
