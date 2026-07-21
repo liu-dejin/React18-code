@@ -11,26 +11,19 @@ import {
   message
 } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import './index.scss'
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import { useEffect, useState } from 'react';
-import { createArticleApi, getChannelsApi, uploadImageApi } from '@/apis/article';
+import { createArticleApi, getArticleDetailApi, updateArticleApi, uploadImageApi } from '@/apis/article';
+import { useChannel } from '@/hooks/useChannel';
 
 const { Option } = Select
 
 const Publish = () => {
-  const [channelList, setChannelList] = useState([])
   const [fileList, setFileList] = useState([])
-  useEffect(() => {
-    console.log("发布页面启动")
-    const getChannelsList = async () => {
-      const res = await getChannelsApi()
-      setChannelList(res.data.channels)
-    }
-    getChannelsList()
-  }, [])
+  const { channelList } = useChannel()
   const onFinish = (formValue) => {
     const { title, content, channel_id } = formValue
     // 无图
@@ -49,11 +42,19 @@ const Publish = () => {
       content,
       cover: {
         type: picType,
-        images: fileList.map(item => item.response.data.url)
+        // 新增/编辑状态的适配
+        images: fileList.map(item => {
+          if (item.response) {
+            return item.response.data.url
+          } else {
+            return item.url
+          }
+        })
       },
       channel_id,
     }
-    createArticleApi(reqData)
+    // 新增/编辑
+    articleId ? updateArticleApi({ ...reqData, id: articleId }) : createArticleApi(reqData)
   };
   const onUploadChange = (info) => {
     setFileList(info.fileList)
@@ -71,13 +72,46 @@ const Publish = () => {
   const onTypeChange = (e) => {
     setPicType(e.target.value)
   }
+  // 回填数据
+  const [searchParams] = useSearchParams()
+  const articleId = searchParams.get('id')
+  // 获取form实例
+  const [form] = Form.useForm()
+  console.log(articleId)
+  useEffect(() => {
+    // articleId 变化时（新建/编辑切换）先重置表单和状态
+    form.resetFields()
+    setFileList([])
+    setPicType(0)
+
+    if (!articleId) return
+    const getArticleDetail = async () => {
+      const res = await getArticleDetailApi(articleId)
+      const data = res.data
+      const { cover } = data
+      form.setFieldsValue({
+        ...data,
+        type: cover.type,
+
+      })
+      setPicType(cover.type)
+
+      // 显示图片
+      setFileList(cover.images.map(url => ({
+        url,
+      })))
+    }
+    getArticleDetail()
+  }, [articleId, form])
   return (
     <div className="publish">
       <Card
         title={
           <Breadcrumb items={[
             { title: <Link to={'/'}>首页</Link> },
-            { title: '发布文章' },
+            {
+              title: `${articleId ? '编辑' : '发布'}文章`
+            },
           ]}
           />
         }
@@ -87,6 +121,7 @@ const Publish = () => {
           wrapperCol={{ span: 16 }}
           initialValues={{ type: picType }}
           onFinish={onFinish}
+          form={form}
         >
           <Form.Item
             label="标题"

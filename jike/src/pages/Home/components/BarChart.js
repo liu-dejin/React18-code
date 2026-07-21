@@ -29,7 +29,7 @@ const BarChart = ({ title, xData }) => {
     }
 
     option && myChart.setOption(option)
-  }, [])
+  }, [title, xData])
   return <div ref={chartRef} style={{ width: 500, height: 400 }}></div>
 };
 export default BarChart

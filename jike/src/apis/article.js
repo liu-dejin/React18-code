@@ -27,3 +27,37 @@ export const uploadImageApi = (file) => {
     data: formData
   })
 }
+
+// 获取文章列表
+export const getArticleListApi = (params) => {
+  return request({
+    url: '/mp/articles',
+    method: 'GET',
+    params
+  })
+}
+
+// 删除文章
+export const delArticleApi = (id) => {
+  return request({
+    url: `/mp/articles/${id}`,
+    method: 'DELETE'
+  })
+}
+
+// 获取文章详情
+export const getArticleDetailApi = (id) => {
+  return request({
+    url: `mp/articles/${id}`,
+    method: 'GET'
+  })
+}
+
+// 更新文章
+export const updateArticleApi = (formData) => {
+  return request({
+    url: `/mp/articles/${formData.id}?draft=false`,
+    method: 'PUT',
+    data: formData
+  })
+}

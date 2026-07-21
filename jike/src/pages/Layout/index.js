@@ -38,7 +38,6 @@ const GeekLayout = () => {
   const selectedKey = location.pathname
 
   const onMenuClick = (route) => {
-    console.log('location:', location)
     const path = route.key
     navigate(path)
   }
